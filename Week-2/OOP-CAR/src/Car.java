@@ -33,7 +33,7 @@ public class Car {
     
 
     public void IncreaseSpeed(int k){
-        if (isTurnedOn == true){    
+        if (isTurnedOn == true){ 
             speed += k;
         }else{
             System.out.println("Car is turned off");
