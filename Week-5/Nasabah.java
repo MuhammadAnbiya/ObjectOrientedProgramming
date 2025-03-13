@@ -15,6 +15,7 @@ public class Nasabah {
         System.out.println("Pilih jenis rekening:");
         System.out.println("1. Tabungan");
         System.out.println("2. Giro");
+        System.out.println("3. Deposito");
         System.out.print("Pilihan: ");
         int jenisRekening = sc.nextInt();
 
@@ -28,6 +29,17 @@ public class Nasabah {
             System.out.print("Limit Penarikan Giro: ");
             double limitPenarikan = sc.nextDouble();
             rekening = new Giro(namaPemilik, nomorRekening, saldo, limitPenarikan);
+        } else if (jenisRekening == 3) {
+            System.out.print("Jangka Waktu (bulan): ");
+            int jangkaWaktu = sc.nextInt();
+            System.out.print("Bunga Tahunan (%): ");
+            double bungaTahunan = sc.nextDouble();
+            rekening = new Deposito(namaPemilik, nomorRekening, saldo, jangkaWaktu, bungaTahunan);
+            
+            ((Deposito) rekening).hitungBunga();
+            
+            System.out.println("Mencoba menarik saldo sebelum jatuh tempo...");
+            ((Deposito) rekening).tarik(saldo / 2);
         } else {
             System.out.println("Pilihan tidak valid. Program berhenti.");
             sc.close();
@@ -45,29 +57,12 @@ public class Nasabah {
             int menu = sc.nextInt();
             
             if (menu == 1) {
-                System.out.println("Pilih metode setor:");
-                System.out.println("1. Setor Tunai");
-                System.out.println("2. Setor dari Rekening Lain");
-                System.out.print("Pilihan: ");
-                int metodeSetor = sc.nextInt();
-
-                if (metodeSetor == 1) {
-                    System.out.print("Jumlah yang akan disetorkan: ");
-                    double jumlah = sc.nextDouble();
-                    rekening.setor(jumlah);
-                    System.out.println("Setoran tunai berhasil.");
-                } else if (metodeSetor == 2) {
-                    System.out.print("Masukkan nomor rekening sumber: ");
-                    String rekeningSumber = sc.next();
-                    System.out.print("Jumlah yang akan disetorkan: ");
-                    double jumlah = sc.nextDouble();
-                    rekening.setor(jumlah, true);
-                    System.out.println("Setoran dari rekening " + rekeningSumber + " berhasil.");
-                } else {
-                    System.out.println("Metode setor tidak valid.");
-                }
+                System.out.print("Jumlah yang akan disetorkan: ");
+                double jumlah = sc.nextDouble();
+                rekening.setor(jumlah);
+                System.out.println("Setoran berhasil.");
             } else if (menu == 2) {
-                System.out.print("Jumlah Saldo yang akan dikurangi: ");
+                System.out.print("Jumlah Saldo yang akan ditarik: ");
                 rekening.tarik(sc.nextDouble());
             } else if (menu == 3) {
                 rekening.tampilkanInfo();
