@@ -7,15 +7,17 @@ public class Tabungan extends Rekening {
     }
 
     public double hitungBunga(int bulan) {
-        return (bungaTahunan/12/100) * saldo * bulan;
+        if (bulan <= 0) {
+            System.out.println("Jumlah bulan harus lebih dari 0.");
+            return 0;
+        }
+        return (bungaTahunan / 12 / 100) * saldo * bulan;
     }
 
     @Override
     public void tampilkanInfo() {
         super.tampilkanInfo();
-        System.out.println("||||||||||||||||||||||||||||||||||");
         System.out.println("Bunga Tahunan: " + bungaTahunan + "%");
         System.out.println("||||||||||||||||||||||||||||||||||");
     }
 }
-
