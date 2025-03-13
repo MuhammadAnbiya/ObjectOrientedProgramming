@@ -43,10 +43,29 @@ public class Nasabah {
             System.out.print("Pilih Menu: ");
             
             int menu = sc.nextInt();
-
+            
             if (menu == 1) {
-                System.out.print("Jumlah Saldo yang akan ditambahkan: ");
-                rekening.setor(sc.nextDouble());
+                System.out.println("Pilih metode setor:");
+                System.out.println("1. Setor Tunai");
+                System.out.println("2. Setor dari Rekening Lain");
+                System.out.print("Pilihan: ");
+                int metodeSetor = sc.nextInt();
+
+                if (metodeSetor == 1) {
+                    System.out.print("Jumlah yang akan disetorkan: ");
+                    double jumlah = sc.nextDouble();
+                    rekening.setor(jumlah);
+                    System.out.println("Setoran tunai berhasil.");
+                } else if (metodeSetor == 2) {
+                    System.out.print("Masukkan nomor rekening sumber: ");
+                    String rekeningSumber = sc.next();
+                    System.out.print("Jumlah yang akan disetorkan: ");
+                    double jumlah = sc.nextDouble();
+                    rekening.setor(jumlah, true);
+                    System.out.println("Setoran dari rekening " + rekeningSumber + " berhasil.");
+                } else {
+                    System.out.println("Metode setor tidak valid.");
+                }
             } else if (menu == 2) {
                 System.out.print("Jumlah Saldo yang akan dikurangi: ");
                 rekening.tarik(sc.nextDouble());

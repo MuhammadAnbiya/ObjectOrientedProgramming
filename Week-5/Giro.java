@@ -1,5 +1,5 @@
 public class Giro extends Rekening {
-    private double limitPenarikan;
+    double limitPenarikan;
 
     public Giro(String namaPemilik, String nomorRekening, double saldo, double limitPenarikan) {
         super(namaPemilik, nomorRekening, saldo, 0);
@@ -8,14 +8,14 @@ public class Giro extends Rekening {
 
     @Override
     public void tarik(double jumlah) {
-        if (getSaldo() >= jumlah) { 
+        if (getSaldo() >= jumlah) {
             setSaldo(getSaldo() - jumlah);
             System.out.println("||||||||||||||||||||||||||||||||||");
             System.out.println("Penarikan berhasil.");
             System.out.println("||||||||||||||||||||||||||||||||||");
-        } else if ((getSaldo() + limitPenarikan) >= jumlah) { 
+        } else if ((getSaldo() + limitPenarikan) >= jumlah) {
             double sisa = jumlah - getSaldo();
-            setSaldo(0); 
+            setSaldo(0);
             limitPenarikan -= sisa;
             System.out.println("||||||||||||||||||||||||||||||||||");
             System.out.println("Penarikan berhasil dengan menggunakan limit giro.");
@@ -26,19 +26,5 @@ public class Giro extends Rekening {
             System.out.println("Saldo dan limit giro tidak mencukupi.");
             System.out.println("||||||||||||||||||||||||||||||||||");
         }
-    }
-
-    public double getLimitPenarikan() {
-        return limitPenarikan;
-    }
-
-    public void setLimitPenarikan(double limitPenarikan) {
-        this.limitPenarikan = limitPenarikan;
-    }
-
-    @Override
-    public void tampilkanInfo() {
-        super.tampilkanInfo();
-        System.out.println("Limit Penarikan Giro: " + limitPenarikan);
     }
 }
