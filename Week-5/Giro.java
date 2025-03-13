@@ -15,7 +15,7 @@ public class Giro extends Rekening {
             System.out.println("||||||||||||||||||||||||||||||||||");
         } else if ((getSaldo() + limitPenarikan) >= jumlah) { 
             double sisa = jumlah - getSaldo();
-            setSaldo(0);  // Saldo habis, sisa menggunakan limit giro
+            setSaldo(0); 
             limitPenarikan -= sisa;
             System.out.println("||||||||||||||||||||||||||||||||||");
             System.out.println("Penarikan berhasil dengan menggunakan limit giro.");

@@ -25,7 +25,7 @@ public class Nasabah {
             double bungaTahunan = sc.nextDouble();
             rekening = new Tabungan(namaPemilik, nomorRekening, saldo, bungaTahunan);
         } else if (jenisRekening == 2) {
-            System.out.print("Limit Penarikan Giro: ");
+            System.out.print("Limit Penarikan Giro: ");`
             double limitPenarikan = sc.nextDouble();
             rekening = new Giro(namaPemilik, nomorRekening, saldo, limitPenarikan);
         } else {
