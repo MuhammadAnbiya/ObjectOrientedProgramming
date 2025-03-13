@@ -3,34 +3,42 @@ import java.util.Scanner;
 public class Nasabah {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Rekening rekening = new Rekening();
+        Tabungan tabungan = new Tabungan("", "", 0, 0);
 
         System.out.println("=============================================");
         System.out.print("Nama Pemilik: ");
-        rekening.setNamaPemilik(sc.next());
+        tabungan.setNamaPemilik(sc.next());
         System.out.print("Nomor Rekening: ");
-        rekening.setNomorRekening(sc.next());
+        tabungan.setNomorRekening(sc.next());
         System.out.print("Saldo: ");
-        rekening.setSaldo(sc.nextDouble());
+        tabungan.setSaldo(sc.nextDouble());
+        System.out.print("Bunga Tahunan (%): ");
+        tabungan.bungaTahunan = sc.nextDouble();
 
         while (true) {
             System.out.println("==========================");
             System.out.println("1. Menambah Saldo");
             System.out.println("2. Mengurangi Saldo");
             System.out.println("3. Menampilkan Informasi");
-            System.out.println("4. Keluar");
+            System.out.println("4. Hitung Bunga");
+            System.out.println("5. Keluar");
             System.out.print("Pilih Menu: ");
             int menu = sc.nextInt();
 
             if (menu == 1) {
                 System.out.print("Jumlah Saldo yang akan ditambahkan: ");
-                rekening.setor(sc.nextDouble());
+                tabungan.setor(sc.nextDouble());
             } else if (menu == 2) {
                 System.out.print("Jumlah Saldo yang akan dikurangi: ");
-                rekening.tarik(sc.nextDouble());
+                tabungan.tarik(sc.nextDouble());
             } else if (menu == 3) {
-                rekening.tampilkanInfo();
+                tabungan.tampilkanInfo();
             } else if (menu == 4) {
+                System.out.print("Masukkan jumlah bulan: ");
+                int bulan = sc.nextInt();
+                double bunga = tabungan.hitungBunga(bulan);
+                System.out.println("Bunga yang diperoleh: " + bunga);
+            } else if (menu == 5) {
                 System.exit(0);
             } else {
                 System.out.println("Menu tidak ada!");

@@ -3,6 +3,17 @@ public class Rekening {
     String nomorRekening;
     double saldo;
 
+    public Rekening(String namaPemilik, String nomorRekening, double saldo, double bungaTahunan) {
+        this.namaPemilik = namaPemilik;
+        this.nomorRekening = nomorRekening;
+        this.saldo = saldo;
+    }
+
+    public Rekening(String namaPemilik, String nomorRekening, double saldo) {
+        this.namaPemilik = namaPemilik;
+        this.nomorRekening = nomorRekening;
+        this.saldo = saldo;
+    }
 
     public void setor(double jumlah) {
         saldo += jumlah;
