@@ -40,11 +40,10 @@ public class Gudang<T> {
         }
     }
 
-    public void printItem(T code) {
+    public void printItem() {
         for(Item<T> item : barang.values()) {
-            if (item.getCode().equals(code)) {
                 item.infoItem();
-            }
+            
         }
     }
 }

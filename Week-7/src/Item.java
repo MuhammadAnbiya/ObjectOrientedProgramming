@@ -35,7 +35,7 @@ public class Item <T>{
 
     
     public void infoItem(){
-        System.out.println("Code: " + getCode() + "Name: " + getName() + "Stock: " + getStock());
+        System.out.println("Code : " + getCode() + " Name : " + getName() + " Stock : " + getStock());
     }
 
     public void addStock(int stock){
