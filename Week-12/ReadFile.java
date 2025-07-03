@@ -4,19 +4,19 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ReadFile {
-    public static void main(String[] args) {
-        BufferedReader br = null;
+    public ReadFile(String filename) {
         try {
-            br = new BufferedReader(new FileReader("data.txt"));
-            String row = "";
-            while((row = br.readLine()) != null) {
-                System.out.println(row);
+            BufferedReader reader = new BufferedReader(new FileReader(filename));
+            String line = reader.readLine();
+            while (line != null) {
+                System.out.println(line);
+                line = reader.readLine();
             }
-        }catch(FileNotFoundException nf) {
-            System.out.println(nf.getMessage());
-        }
-        catch (IOException e) {
-            System.out.println(e.getMessage());
+            reader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + filename);
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + filename);
         }
     }
 }
